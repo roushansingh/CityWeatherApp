@@ -28,22 +28,37 @@ import { Provider } from 'react-redux';
 import { store } from './src/common/StoreConfig';
 import HomeScreen from './src/weather/screens/HomeScreen';
 import WeatherDetailsScreen from './src/weather/screens/WeatherDetailsScreen';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const StackNavigator = createStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <StackNavigator.Navigator
+      initialRouteName='Home'>
+      <StackNavigator.Screen name='Home' component={HomeScreen} options={{headerShown: false}} />
+      <StackNavigator.Screen name='Weather Details' component={WeatherDetailsScreen} options={{
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#f4511e'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+        headerBackTitle: ''
+      }} />
+    </StackNavigator.Navigator>
+  )
+}
 
 const App: () => React$Node = () => {
   return (
     <>
       <Provider store={store}>
         <NavigationContainer>
-          <StackNavigator.Navigator 
-            initialRouteName='Home'
-            screenOptions={{headerShown: false}}>
-              <StackNavigator.Screen name='Home' component={HomeScreen}/>
-              <StackNavigator.Screen name='Weather Details' component={WeatherDetailsScreen} screenOptions={{headerShown: true}} />
-          </StackNavigator.Navigator>
+          <HomeStackScreen />
         </NavigationContainer>
         <StatusBar barStyle="dark-content" />
       </Provider>

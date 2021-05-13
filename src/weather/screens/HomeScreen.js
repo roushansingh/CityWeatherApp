@@ -57,7 +57,7 @@ const HomeScreen = (props) => {
     return (
         <View style={styles.background}>
             <View style={styles.header}>
-                <Text style={styles.title}>Find out the weather detail in your city</Text>
+                <Text style={styles.title}>Find out the weather details in your city</Text>
             </View>
             <View style={styles.footer}>
                 <TextInput

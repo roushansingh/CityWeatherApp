@@ -1,17 +1,16 @@
 import React from 'react';
-
 import {
     StyleSheet,
     View,
     Text,
-    Pressable,
+    Pressable
 } from 'react-native';
 
 const WeatherHeader = (props) => {
 
     const { cityName, weather, temprature } = props.info
 
-    const onPressBack = () => {
+    const onClickBack = () => {
         props.onBack()
     }
 
@@ -20,11 +19,6 @@ const WeatherHeader = (props) => {
             <Text style={styles.cityNameText}>{cityName}</Text>
             <Text style={styles.weatherText}>{weather}</Text>
             <Text style={styles.tempratureText}>{`${temprature.toFixed(0)}°C`}</Text>
-            <Pressable style={styles.backButtonBackground} onPress={onPressBack}>
-                <View >
-                    <Text style={styles.backButtonTitle}> Back </Text>
-                </View>
-            </Pressable>
         </View>
     );
 }
@@ -51,7 +45,7 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     cityNameText: {
-        paddingTop: 50,
+        paddingTop: 10,
         textAlign: 'center',
         fontSize: 36,
         fontWeight: '300',
